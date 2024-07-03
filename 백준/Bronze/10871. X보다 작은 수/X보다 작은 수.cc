@@ -7,7 +7,7 @@ int main(void) {
 
 	int n, x, k;
 	cin >> n >> x;
-	for (int i = 0; i < n; i++) {
+	while (n--) {
 		cin >> k;
 		if (x > k)
 			cout << k << ' ';
