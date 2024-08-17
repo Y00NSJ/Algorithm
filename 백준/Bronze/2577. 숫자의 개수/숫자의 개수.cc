@@ -7,15 +7,15 @@ int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
     
-    int result = 1;
-    int nums[3] = {};
-    for (int i : nums) {
-        cin >> i;
-        result *= i;
-    }
+    int a, b, c;
 
-    string st = to_string(result);
-    for (auto c : st) cnt[c - '0']++;
+    cin >> a >> b >> c;
+    int result = a*b*c;
+
+    while (result > 0) {
+        cnt[result % 10]++;
+        result /= 10;
+    }
 
     for (int o : cnt) cout << o << '\n';
 }
