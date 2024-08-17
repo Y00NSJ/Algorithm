@@ -6,21 +6,21 @@ int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int result = 0;
-    string num;
+    int num, result = 0;
     cin >> num;
 
-    for (char c : num) {
-        if (c - '0' == 9 || c - '0' == 6) {
+    while (num) {
+        if (num % 10 == 9 || num % 10 == 6) {
             cnt[6]++;
             // if (cnt[6] > 2 && cnt[6])
         }
-        else cnt[c - '0']++;
+        else cnt[num % 10]++;
+        num /= 10;
     }
 
     cnt[6] = (cnt[6] + 1) / 2;
     for(int i : cnt) {
-        if (i > result) result = i;
+        result = max(result, i);
     }
 
     cout << result;
