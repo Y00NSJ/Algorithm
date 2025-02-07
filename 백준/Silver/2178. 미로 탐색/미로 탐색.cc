@@ -1,19 +1,18 @@
+// https://www.acmicpc.net/problem/2178
 #include <bits/stdc++.h>
 using namespace std;
 
-string maze[102];
+
 int vis[102][102];
 int dx[4] = {1, 0, -1, 0};
-int dy[4] = {0, -1, 0, 1};
+int dy[4] = {0, 1, 0, -1};
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
     int row, column;
     cin >> row >> column;
-    for (int i = 0; i < row; i++) {
-        cin >> maze[i];
-    }
+    string maze[row];
+    for (int i = 0; i < row; i++) cin >> maze[i];
 
     queue<pair<int, int>> Q;
     vis[0][0] = 1;
@@ -29,6 +28,7 @@ int main() {
 
             if (nx < 0 || nx >= row || ny < 0 || ny >= column) continue;
             if (vis[nx][ny] || maze[nx][ny] != '1') continue;
+
             vis[nx][ny] = vis[cur.first][cur.second] + 1;
             Q.push({nx, ny});
         }
